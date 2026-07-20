@@ -1,0 +1,239 @@
+---
+const teas = [
+  {
+    name: "龙井",
+    category: "绿茶",
+    enName: "Longjing",
+    description: "中国十大名茶之首，扁平挺直，色泽翠绿，香气清高持久。",
+    price: "$28.00",
+    color: "#a8c9a0"
+  },
+  {
+    name: "抹茶",
+    category: "绿茶",
+    enName: "Matcha",
+    description: "细腻翠绿的粉末，鲜爽醇厚，富含抗氧化物，适合冲泡与烘焙。",
+    price: "$35.00",
+    color: "#7fb069"
+  },
+  {
+    name: "正山小种",
+    category: "红茶",
+    enName: "Lapsang Souchong",
+    description: "世界红茶鼻祖，独特的松烟香，口感醇厚甘甜。",
+    price: "$25.00",
+    color: "#c1846b"
+  },
+  {
+    name: "祁门红茶",
+    category: "红茶",
+    enName: "Keemun",
+    description: "英国王室御用红茶，果香与蜜香交融，被誉为'红茶皇后'。",
+    price: "$30.00",
+    color: "#b86b4a"
+  },
+  {
+    name: "铁观音",
+    category: "乌龙茶",
+    enName: "Tieguanyin",
+    description: "七泡有余香，兰花馥郁，回甘悠长，半发酵乌龙茶代表。",
+    price: "$32.00",
+    color: "#d4a574"
+  },
+  {
+    name: "大红袍",
+    category: "乌龙茶",
+    enName: "Da Hong Pao",
+    description: "岩骨花香，韵味深远，武夷岩茶之王，珍贵稀有。",
+    price: "$45.00",
+    color: "#8b4513"
+  },
+  {
+    name: "白毫银针",
+    category: "白茶",
+    enName: "Bai Hao Yin Zhen",
+    description: "满披白毫，汤色浅淡，清甜爽口，白茶中的珍品。",
+    price: "$38.00",
+    color: "#e8e0d0"
+  },
+  {
+    name: "生普",
+    category: "普洱",
+    enName: "Raw Pu'er",
+    description: "清新回甘，越陈越香，具有收藏价值的生饼茶。",
+    price: "$42.00",
+    color: "#9b8e7a"
+  },
+  {
+    name: "熟普",
+    category: "普洱",
+    enName: "Ripe Pu'er",
+    description: "醇厚顺滑，陈香浓郁，暖胃养生，经渥堆发酵工艺制成。",
+    price: "$40.00",
+    color: "#6b4e3d"
+  },
+  {
+    name: "茉莉花茶",
+    category: "花茶",
+    enName: "Jasmine",
+    description: "茉莉鲜花窨制，花香与茶香交融，清新怡人。",
+    price: "$22.00",
+    color: "#f0e6c8"
+  }
+];
+
+const categories = [...new Set(teas.map(t => t.category))];
+---
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pyq Tea — 精品中国茶</title>
+  <style>
+    :root {
+      --green: #4a7c3a;
+      --green-dark: #2d5a27;
+      --green-light: #a8c9a0;
+      --bg: #f8f6f1;
+      --text: #2c2c2c;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', 'Noto Serif SC', serif; color: var(--text); background: var(--bg); }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 3rem; background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: var(--green-dark); }
+    .logo span { color: var(--green); }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav ul li a { font-size: 0.95rem; transition: color 0.2s; }
+    nav ul li a:hover { color: var(--green); }
+    .cart-icon { font-size: 1.2rem; }
+
+    .hero {
+      text-align: center; padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--green-light), var(--bg));
+    }
+    .hero h1 { font-size: 3rem; color: var(--green-dark); margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto 2rem; }
+    .hero .btn {
+      display: inline-block; padding: 0.8rem 2.5rem; background: var(--green);
+      color: var(--white); border-radius: 30px; font-size: 1rem; transition: background 0.2s;
+    }
+    .hero .btn:hover { background: var(--green-dark); }
+
+    .categories { display: flex; justify-content: center; gap: 1rem; padding: 2rem; flex-wrap: wrap; }
+    .category-btn {
+      padding: 0.5rem 1.5rem; border: 2px solid var(--green); border-radius: 20px;
+      background: transparent; color: var(--green); cursor: pointer; font-size: 0.9rem; transition: all 0.2s;
+    }
+    .category-btn:hover, .category-btn.active { background: var(--green); color: var(--white); }
+
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; padding: 2rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
+    .product {
+      background: var(--white); border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+    .product-img {
+      width: 100%; height: 220px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: rgba(255,255,255,0.9); font-weight: bold;
+    }
+    .product-info { padding: 1.2rem; }
+    .product-category { font-size: 0.8rem; color: var(--green); text-transform: uppercase; letter-spacing: 1px; }
+    .product-name { font-size: 1.3rem; margin: 0.3rem 0; color: var(--green-dark); }
+    .product-en { font-size: 0.85rem; color: #999; margin-bottom: 0.5rem; }
+    .product-desc { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
+    .product-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .product-price { font-size: 1.3rem; font-weight: bold; color: var(--green-dark); }
+    .buy-btn {
+      padding: 0.5rem 1.2rem; background: var(--green); color: var(--white);
+      border: none; border-radius: 20px; cursor: pointer; font-size: 0.85rem; transition: background 0.2s;
+    }
+    .buy-btn:hover { background: var(--green-dark); }
+
+    footer { text-align: center; padding: 2rem; background: var(--green-dark); color: var(--white); }
+    footer p { font-size: 0.9rem; opacity: 0.8; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { display: none; }
+      .hero h1 { font-size: 2rem; }
+      .products { padding: 1rem; grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Pyq <span>Tea</span></div>
+    <ul>
+      <li><a href="#home">首页</a></li>
+      <li><a href="#products">产品</a></li>
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+    <div class="cart-icon">🛒</div>
+  </nav>
+
+  <section class="hero" id="home">
+    <h1>精品中国茶</h1>
+    <p>从龙井到普洱，精选中国十大名茶，将东方茶文化带给欧美茶友。每一片茶叶都来自原产地，手工采摘，品质保证。</p>
+    <a href="#products" class="btn">浏览产品</a>
+  </section>
+
+  <div class="categories" id="products">
+    <button class="category-btn active" data-category="all">全部</button>
+    {categories.map(cat => (
+      <button class="category-btn" data-category={cat}>{cat}</button>
+    ))}
+  </div>
+
+  <div class="products">
+    {teas.map((tea) => (
+      <div class="product" data-category={tea.category}>
+        <div class="product-img" style={`background: linear-gradient(135deg, ${tea.color}, ${tea.color}dd)`}>
+          {tea.name}
+        </div>
+        <div class="product-info">
+          <div class="product-category">{tea.category}</div>
+          <h3 class="product-name">{tea.name}</h3>
+          <div class="product-en">{tea.enName}</div>
+          <p class="product-desc">{tea.description}</p>
+          <div class="product-bottom">
+            <span class="product-price">{tea.price}</span>
+            <button class="buy-btn">加入购物车</button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <footer>
+    <p>© 2026 Pyq Tea — 精品中国茶 · tea.pyqhintl.com</p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.category-btn');
+    const products = document.querySelectorAll('.product');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.category;
+        products.forEach(p => {
+          if (cat === 'all' || p.dataset.category === cat) {
+            p.style.display = 'block';
+          } else {
+            p.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
