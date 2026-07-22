@@ -167,6 +167,34 @@ const categories = [...new Set(teas.map(t => t.category))];
       .products { padding: 1rem; grid-template-columns: 1fr; }
     }
   </style>
+  <!-- Google Translate -->
+  <style>
+    .language-selector { position: relative; display: inline-block; }
+    .language-btn {
+      padding: 0.4rem 1rem; border: 1px solid #ddd; border-radius: 20px;
+      background: var(--white); cursor: pointer; font-size: 0.85rem;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .language-btn:hover { border-color: var(--green); }
+    .language-dropdown {
+      display: none; position: absolute; right: 0; top: 100%;
+      background: var(--white); border: 1px solid #ddd; border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 200;
+      max-height: 300px; overflow-y: auto; min-width: 160px;
+    }
+    .language-dropdown.open { display: block; }
+    .language-dropdown a {
+      display: block; padding: 0.5rem 1rem; font-size: 0.85rem;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .language-dropdown a:hover { background: #f0f0f0; }
+    #google_translate_element { display: none; }
+    .goog-te-banner-frame { display: none !important; }
+    .goog-te-gadget { display: none !important; }
+    body { top: 0 !important; }
+    .goog-tooltip { display: none !important; }
+    .goog-tooltip:hover { display: none !important; }
+  </style>
 </head>
 <body>
   <nav>
@@ -177,7 +205,32 @@ const categories = [...new Set(teas.map(t => t.category))];
       <li><a href="#about">关于我们</a></li>
       <li><a href="#contact">联系我们</a></li>
     </ul>
+      <div class="language-selector">
+      <button class="language-btn" onclick="toggleLanguage()">🌐 Language / 语言</button>
+
+      <div class="language-dropdown" id="langDropdown">
+        <a onclick="translatePage('zh-CN')">🇨🇳 中文</a>
+        <a onclick="translatePage('en')">🇺🇸 English</a>
+        <a onclick="translatePage('ja')">🇯🇵 日本語</a>
+        <a onclick="translatePage('fr')">🇫🇷 Français</a>
+        <a onclick="translatePage('es')">🇪🇸 Español</a>
+        <a onclick="translatePage('de')">🇩🇪 Deutsch</a>
+        <a onclick="translatePage('ko')">🇰🇷 한국어</a>
+        <a onclick="translatePage('ar')">🇸🇦 العربية</a>
+        <a onclick="translatePage('ru')">🇷🇺 Русский</a>
+        <a onclick="translatePage('pt')">🇵🇹 Português</a>
+        <a onclick="translatePage('it')">🇮🇹 Italiano</a>
+        <a onclick="translatePage('th')">🇹🇭 ไทย</a>
+        <a onclick="translatePage('vi')">🇻🇳 Tiếng Việt</a>
+        <a onclick="translatePage('hi')">🇮🇳 हिन्दी</a>
+        <a onclick="translatePage('tr')">🇹🇷 Türkçe</a>
+        <a onclick="translatePage('nl')">🇳🇱 Nederlands</a>
+        <a onclick="translatePage('pl')">🇵🇱 Polski</a>
+        <a onclick="translatePage('id')">🇮🇩 Indonesia</a>
+      </div>
+    </div>
     <div class="cart-icon">🛒</div>
+
   </nav>
 
   <section class="hero" id="home">
@@ -235,5 +288,57 @@ const categories = [...new Set(teas.map(t => t.category))];
       });
     });
   </script>
+  <!-- Google Translate 初始化 -->
+  <div id="google_translate_element"></div>
+  <script is:inline src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script is:inline>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'zh-CN',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    function toggleLanguage() {
+      const dropdown = document.getElementById('langDropdown');
+      dropdown.classList.toggle('open');
+    }
+
+    function translatePage(lang) {
+      document.getElementById('langDropdown').classList.remove('open');
+      document.cookie = 'googtrans=/zh-CN/' + lang + '; path=/';
+      window.location.reload();
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.language-selector')) {
+        document.getElementById('langDropdown').classList.remove('open');
+      }
+    });
+
+    // 自动语言检测：首次访问时根据浏览器语言自动翻译
+    window.addEventListener('load', function() {
+      const hasChosen = document.cookie.indexOf('googtrans=') !== -1;
+      if (!hasChosen) {
+        const browserLang = (navigator.language || navigator.userLanguage || 'zh-CN').toLowerCase();
+        const langMap = {
+          'zh': 'zh-CN', 'zh-cn': 'zh-CN', 'zh-tw': 'zh-CN',
+          'en': 'en', 'en-us': 'en', 'en-gb': 'en',
+          'ja': 'ja', 'fr': 'fr', 'es': 'es',
+          'de': 'de', 'ko': 'ko', 'ar': 'ar',
+          'ru': 'ru', 'pt': 'pt', 'it': 'it',
+          'th': 'th', 'vi': 'vi', 'hi': 'hi',
+          'tr': 'tr', 'nl': 'nl', 'pl': 'pl', 'id': 'id'
+        };
+        const prefix = browserLang.split('-')[0];
+        const targetLang = langMap[browserLang] || langMap[prefix] || null;
+        if (targetLang && targetLang !== 'zh-CN') {
+          document.cookie = 'googtrans=/zh-CN/' + targetLang + '; path=/';
+          window.location.reload();
+        }
+      }
+    });
+  </script>
+
 </body>
 </html>
