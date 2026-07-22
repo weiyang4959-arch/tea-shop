@@ -1,87 +1,16 @@
 ---
 const teas = [
-  {
-    name: "龙井",
-    category: "绿茶",
-    enName: "Longjing",
-    description: "中国十大名茶之首，扁平挺直，色泽翠绿，香气清高持久。",
-    price: "$28.00",
-    color: "#a8c9a0"
-  },
-  {
-    name: "抹茶",
-    category: "绿茶",
-    enName: "Matcha",
-    description: "细腻翠绿的粉末，鲜爽醇厚，富含抗氧化物，适合冲泡与烘焙。",
-    price: "$35.00",
-    color: "#7fb069"
-  },
-  {
-    name: "正山小种",
-    category: "红茶",
-    enName: "Lapsang Souchong",
-    description: "世界红茶鼻祖，独特的松烟香，口感醇厚甘甜。",
-    price: "$25.00",
-    color: "#c1846b"
-  },
-  {
-    name: "祁门红茶",
-    category: "红茶",
-    enName: "Keemun",
-    description: "英国王室御用红茶，果香与蜜香交融，被誉为'红茶皇后'。",
-    price: "$30.00",
-    color: "#b86b4a"
-  },
-  {
-    name: "铁观音",
-    category: "乌龙茶",
-    enName: "Tieguanyin",
-    description: "七泡有余香，兰花馥郁，回甘悠长，半发酵乌龙茶代表。",
-    price: "$32.00",
-    color: "#d4a574"
-  },
-  {
-    name: "大红袍",
-    category: "乌龙茶",
-    enName: "Da Hong Pao",
-    description: "岩骨花香，韵味深远，武夷岩茶之王，珍贵稀有。",
-    price: "$45.00",
-    color: "#8b4513"
-  },
-  {
-    name: "白毫银针",
-    category: "白茶",
-    enName: "Bai Hao Yin Zhen",
-    description: "满披白毫，汤色浅淡，清甜爽口，白茶中的珍品。",
-    price: "$38.00",
-    color: "#e8e0d0"
-  },
-  {
-    name: "生普",
-    category: "普洱",
-    enName: "Raw Pu'er",
-    description: "清新回甘，越陈越香，具有收藏价值的生饼茶。",
-    price: "$42.00",
-    color: "#9b8e7a"
-  },
-  {
-    name: "熟普",
-    category: "普洱",
-    enName: "Ripe Pu'er",
-    description: "醇厚顺滑，陈香浓郁，暖胃养生，经渥堆发酵工艺制成。",
-    price: "$40.00",
-    color: "#6b4e3d"
-  },
-  {
-    name: "茉莉花茶",
-    category: "花茶",
-    enName: "Jasmine",
-    description: "茉莉鲜花窨制，花香与茶香交融，清新怡人。",
-    price: "$22.00",
-    color: "#f0e6c8"
-  }
+  { name: "龙井", category: "绿茶", enName: "Longjing", description: "中国十大名茶之首，扁平挺直，色泽翠绿，香气清高持久。", price: 28.00, color: "#a8c9a0" },
+  { name: "抹茶", category: "绿茶", enName: "Matcha", description: "细腻翠绿的粉末，鲜爽醇厚，富含抗氧化物，适合冲泡与烘焙。", price: 35.00, color: "#7fb069" },
+  { name: "正山小种", category: "红茶", enName: "Lapsang Souchong", description: "世界红茶鼻祖，独特的松烟香，口感醇厚甘甜。", price: 25.00, color: "#c1846b" },
+  { name: "祁门红茶", category: "红茶", enName: "Keemun", description: "英国王室御用红茶，果香与蜜香交融，被誉为'红茶皇后'。", price: 30.00, color: "#b86b4a" },
+  { name: "铁观音", category: "乌龙茶", enName: "Tieguanyin", description: "七泡有余香，兰花馥郁，回甘悠长，半发酵乌龙茶代表。", price: 32.00, color: "#d4a574" },
+  { name: "大红袍", category: "乌龙茶", enName: "Da Hong Pao", description: "岩骨花香，韵味深远，武夷岩茶之王，珍贵稀有。", price: 45.00, color: "#8b4513" },
+  { name: "白毫银针", category: "白茶", enName: "Bai Hao Yin Zhen", description: "满披白毫，汤色浅淡，清甜爽口，白茶中的珍品。", price: 38.00, color: "#e8e0d0" },
+  { name: "生普", category: "普洱", enName: "Raw Pu'er", description: "清新回甘，越陈越香，具有收藏价值的生饼茶。", price: 42.00, color: "#9b8e7a" },
+  { name: "熟普", category: "普洱", enName: "Ripe Pu'er", description: "醇厚顺滑，陈香浓郁，暖胃养生，经渥堆发酵工艺制成。", price: 40.00, color: "#6b4e3d" },
+  { name: "茉莉花茶", category: "花茶", enName: "Jasmine", description: "茉莉鲜花窨制，花香与茶香交融，清新怡人。", price: 22.00, color: "#f0e6c8" }
 ];
-
 const categories = [...new Set(teas.map(t => t.category))];
 ---
 
@@ -113,7 +42,13 @@ const categories = [...new Set(teas.map(t => t.category))];
     nav ul { display: flex; gap: 2rem; list-style: none; }
     nav ul li a { font-size: 0.95rem; transition: color 0.2s; }
     nav ul li a:hover { color: var(--green); }
-    .cart-icon { font-size: 1.2rem; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .cart-icon { font-size: 1.2rem; cursor: pointer; position: relative; }
+    .cart-count {
+      position: absolute; top: -8px; right: -8px; background: #e74c3c; color: white;
+      border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center;
+      justify-content: center; font-size: 0.7rem; font-weight: bold; display: none;
+    }
 
     .hero {
       text-align: center; padding: 5rem 2rem;
@@ -157,18 +92,46 @@ const categories = [...new Set(teas.map(t => t.category))];
     }
     .buy-btn:hover { background: var(--green-dark); }
 
-    footer { text-align: center; padding: 2rem; background: var(--green-dark); color: var(--white); }
-    footer p { font-size: 0.9rem; opacity: 0.8; }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      nav ul { display: none; }
-      .hero h1 { font-size: 2rem; }
-      .products { padding: 1rem; grid-template-columns: 1fr; }
+    /* 购物车侧边栏 */
+    .cart-sidebar {
+      position: fixed; top: 0; right: -400px; width: 380px; height: 100vh;
+      background: var(--white); box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+      z-index: 300; transition: right 0.3s; display: flex; flex-direction: column;
     }
-  </style>
-  <!-- Google Translate -->
-  <style>
+    .cart-sidebar.open { right: 0; }
+    .cart-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4); z-index: 250; display: none;
+    }
+    .cart-overlay.open { display: block; }
+    .cart-header {
+      padding: 1.5rem; border-bottom: 1px solid #eee; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    .cart-header h2 { font-size: 1.3rem; color: var(--green-dark); }
+    .cart-close { font-size: 1.5rem; cursor: pointer; color: #999; background: none; border: none; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+    .cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #f0f0f0; }
+    .cart-item-img { width: 60px; height: 60px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: white; font-weight: bold; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 1rem; color: var(--green-dark); margin-bottom: 0.3rem; }
+    .cart-item-price { font-size: 0.9rem; color: #666; }
+    .cart-item-controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+    .qty-btn { width: 28px; height: 28px; border: 1px solid #ddd; border-radius: 4px; background: var(--white); cursor: pointer; font-size: 1rem; }
+    .qty-btn:hover { border-color: var(--green); color: var(--green); }
+    .qty-display { min-width: 30px; text-align: center; font-size: 0.95rem; }
+    .remove-btn { color: #e74c3c; background: none; border: none; cursor: pointer; font-size: 0.8rem; margin-left: auto; }
+    .cart-empty { text-align: center; padding: 3rem 1rem; color: #999; }
+    .cart-footer { padding: 1.5rem; border-top: 1px solid #eee; }
+    .cart-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; color: var(--green-dark); }
+    .checkout-btn {
+      width: 100%; padding: 0.8rem; background: var(--green); color: var(--white);
+      border: none; border-radius: 25px; cursor: pointer; font-size: 1rem; transition: background 0.2s;
+    }
+    .checkout-btn:hover { background: var(--green-dark); }
+    .checkout-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+    /* 语言选择器 */
     .language-selector { position: relative; display: inline-block; }
     .language-btn {
       padding: 0.4rem 1rem; border: 1px solid #ddd; border-radius: 20px;
@@ -194,6 +157,17 @@ const categories = [...new Set(teas.map(t => t.category))];
     body { top: 0 !important; }
     .goog-tooltip { display: none !important; }
     .goog-tooltip:hover { display: none !important; }
+
+    footer { text-align: center; padding: 2rem; background: var(--green-dark); color: var(--white); }
+    footer p { font-size: 0.9rem; opacity: 0.8; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { display: none; }
+      .hero h1 { font-size: 2rem; }
+      .products { padding: 1rem; grid-template-columns: 1fr; }
+      .cart-sidebar { width: 100%; right: -100%; }
+    }
   </style>
 </head>
 <body>
@@ -205,32 +179,34 @@ const categories = [...new Set(teas.map(t => t.category))];
       <li><a href="#about">关于我们</a></li>
       <li><a href="#contact">联系我们</a></li>
     </ul>
+    <div class="nav-right">
       <div class="language-selector">
-      <button class="language-btn" onclick="toggleLanguage()">🌐 Language / 语言</button>
-
-      <div class="language-dropdown" id="langDropdown">
-        <a onclick="translatePage('zh-CN')">🇨🇳 中文</a>
-        <a onclick="translatePage('en')">🇺🇸 English</a>
-        <a onclick="translatePage('ja')">🇯🇵 日本語</a>
-        <a onclick="translatePage('fr')">🇫🇷 Français</a>
-        <a onclick="translatePage('es')">🇪🇸 Español</a>
-        <a onclick="translatePage('de')">🇩🇪 Deutsch</a>
-        <a onclick="translatePage('ko')">🇰🇷 한국어</a>
-        <a onclick="translatePage('ar')">🇸🇦 العربية</a>
-        <a onclick="translatePage('ru')">🇷🇺 Русский</a>
-        <a onclick="translatePage('pt')">🇵🇹 Português</a>
-        <a onclick="translatePage('it')">🇮🇹 Italiano</a>
-        <a onclick="translatePage('th')">🇹🇭 ไทย</a>
-        <a onclick="translatePage('vi')">🇻🇳 Tiếng Việt</a>
-        <a onclick="translatePage('hi')">🇮🇳 हिन्दी</a>
-        <a onclick="translatePage('tr')">🇹🇷 Türkçe</a>
-        <a onclick="translatePage('nl')">🇳🇱 Nederlands</a>
-        <a onclick="translatePage('pl')">🇵🇱 Polski</a>
-        <a onclick="translatePage('id')">🇮🇩 Indonesia</a>
+        <button class="language-btn" onclick="toggleLanguage()">🌐 Language / 语言</button>
+        <div class="language-dropdown" id="langDropdown">
+          <a onclick="translatePage('zh-CN')">🇨🇳 中文</a>
+          <a onclick="translatePage('en')">🇺🇸 English</a>
+          <a onclick="translatePage('ja')">🇯🇵 日本語</a>
+          <a onclick="translatePage('fr')">🇫🇷 Français</a>
+          <a onclick="translatePage('es')">🇪🇸 Español</a>
+          <a onclick="translatePage('de')">🇩🇪 Deutsch</a>
+          <a onclick="translatePage('ko')">🇰🇷 한국어</a>
+          <a onclick="translatePage('ar')">🇸🇦 العربية</a>
+          <a onclick="translatePage('ru')">🇷🇺 Русский</a>
+          <a onclick="translatePage('pt')">🇵🇹 Português</a>
+          <a onclick="translatePage('it')">🇮🇹 Italiano</a>
+          <a onclick="translatePage('th')">🇹🇭 ไทย</a>
+          <a onclick="translatePage('vi')">🇻🇳 Tiếng Việt</a>
+          <a onclick="translatePage('hi')">🇮🇳 हिन्दी</a>
+          <a onclick="translatePage('tr')">🇹🇷 Türkçe</a>
+          <a onclick="translatePage('nl')">🇳🇱 Nederlands</a>
+          <a onclick="translatePage('pl')">🇵🇱 Polski</a>
+          <a onclick="translatePage('id')">🇮🇩 Indonesia</a>
+        </div>
+      </div>
+      <div class="cart-icon" onclick="openCart()">
+        🛒 <span class="cart-count" id="cartCount">0</span>
       </div>
     </div>
-    <div class="cart-icon">🛒</div>
-
   </nav>
 
   <section class="hero" id="home">
@@ -258,37 +234,38 @@ const categories = [...new Set(teas.map(t => t.category))];
           <div class="product-en">{tea.enName}</div>
           <p class="product-desc">{tea.description}</p>
           <div class="product-bottom">
-            <span class="product-price">{tea.price}</span>
-            <button class="buy-btn">加入购物车</button>
+            <span class="product-price">${tea.price.toFixed(2)}</span>
+            <button class="buy-btn" onclick={`addToCart('${tea.name}', ${tea.price}, '${tea.color}')`}>加入购物车</button>
           </div>
         </div>
       </div>
     ))}
   </div>
 
+  <!-- 购物车侧边栏 -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>购物车</h2>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">购物车为空</div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>总计</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>结算</button>
+    </div>
+  </div>
+
   <footer>
     <p>© 2026 Pyq Tea — 精品中国茶 · tea.pyqhintl.com</p>
   </footer>
 
-  <script>
-    const buttons = document.querySelectorAll('.category-btn');
-    const products = document.querySelectorAll('.product');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.dataset.category;
-        products.forEach(p => {
-          if (cat === 'all' || p.dataset.category === cat) {
-            p.style.display = 'block';
-          } else {
-            p.style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
-  <!-- Google Translate 初始化 -->
+  <!-- Google Translate -->
   <div id="google_translate_element"></div>
   <script is:inline src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script is:inline>
@@ -298,25 +275,20 @@ const categories = [...new Set(teas.map(t => t.category))];
         autoDisplay: false
       }, 'google_translate_element');
     }
-
     function toggleLanguage() {
       const dropdown = document.getElementById('langDropdown');
       dropdown.classList.toggle('open');
     }
-
     function translatePage(lang) {
       document.getElementById('langDropdown').classList.remove('open');
       document.cookie = 'googtrans=/zh-CN/' + lang + '; path=/';
       window.location.reload();
     }
-
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.language-selector')) {
         document.getElementById('langDropdown').classList.remove('open');
       }
     });
-
-    // 自动语言检测：首次访问时根据浏览器语言自动翻译
     window.addEventListener('load', function() {
       const hasChosen = document.cookie.indexOf('googtrans=') !== -1;
       if (!hasChosen) {
@@ -340,5 +312,122 @@ const categories = [...new Set(teas.map(t => t.category))];
     });
   </script>
 
+  <!-- 购物车功能 -->
+  <script is:inline>
+    let cart = JSON.parse(localStorage.getItem('teaCart') || '[]');
+
+    function saveCart() {
+      localStorage.setItem('teaCart', JSON.stringify(cart));
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const el = document.getElementById('cartCount');
+      el.textContent = count;
+      el.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    function addToCart(name, price, color) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ name, price, color, qty: 1 });
+      }
+      saveCart();
+      updateCartCount();
+      renderCart();
+      openCart();
+    }
+
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      saveCart();
+      updateCartCount();
+      renderCart();
+    }
+
+    function changeQty(name, delta) {
+      const item = cart.find(i => i.name === name);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+          removeFromCart(name);
+        } else {
+          saveCart();
+          updateCartCount();
+          renderCart();
+        }
+      }
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const totalEl = document.getElementById('cartTotal');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+      if (cart.length === 0) {
+        container.innerHTML = '<div class="cart-empty">购物车为空</div>';
+        totalEl.textContent = '$0.00';
+        checkoutBtn.disabled = true;
+        return;
+      }
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        total += item.price * item.qty;
+        return `
+          <div class="cart-item">
+            <div class="cart-item-img" style="background: ${item.color}">${item.name.charAt(0)}</div>
+            <div class="cart-item-info">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+              <div class="cart-item-controls">
+                <button class="qty-btn" onclick="changeQty('${item.name}', -1)">−</button>
+                <span class="qty-display">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty('${item.name}', 1)">+</button>
+                <button class="remove-btn" onclick="removeFromCart('${item.name}')">删除</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      totalEl.textContent = '$' + total.toFixed(2);
+      checkoutBtn.disabled = false;
+    }
+
+    function openCart() {
+      document.getElementById('cartSidebar').classList.add('open');
+      document.getElementById('cartOverlay').classList.add('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cartSidebar').classList.remove('open');
+      document.getElementById('cartOverlay').classList.remove('open');
+    }
+
+    function checkout() {
+      if (cart.length === 0) return;
+      const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const items = cart.map(item => `${item.name} x${item.qty} = $${(item.price * item.qty).toFixed(2)}`).join('\n');
+      alert('订单确认\n\n' + items + '\n\n总计: $' + total.toFixed(2) + '\n\n支付功能即将上线，敬请期待！');
+    }
+
+    // 品类筛选
+    const buttons = document.querySelectorAll('.category-btn');
+    const products = document.querySelectorAll('.product');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.category;
+        products.forEach(p => {
+          p.style.display = (cat === 'all' || p.dataset.category === cat) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // 初始化
+    updateCartCount();
+    renderCart();
+  </script>
 </body>
 </html>
