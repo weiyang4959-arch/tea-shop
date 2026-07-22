@@ -1,63 +1,149 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+const contactEmail = "contact@pyqhintl.com";
+
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于我们 — Pyq Tea</title>
+  <style>
+    :root {
+      --green: #4a7c3a;
+      --green-dark: #2d5a27;
+      --green-light: #a8c9a0;
+      --bg: #f8f6f1;
+      --text: #2c2c2c;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', 'Noto Serif SC', serif; color: var(--text); background: var(--bg); }
+    a { text-decoration: none; color: inherit; }
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 3rem; background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: var(--green-dark); }
+    .logo span { color: var(--green); }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav ul li a { font-size: 0.95rem; transition: color 0.2s; }
+    nav ul li a:hover { color: var(--green); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .cart-icon { font-size: 1.2rem; cursor: pointer; position: relative; }
+    .back-btn {
+      padding: 0.4rem 1rem; border: 1px solid #ddd; border-radius: 20px;
+      background: var(--white); cursor: pointer; font-size: 0.85rem;
+    }
+    .back-btn:hover { border-color: var(--green); color: var(--green); }
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+    .about-hero {
+      text-align: center; padding: 4rem 2rem;
+      background: linear-gradient(135deg, var(--green-light), var(--bg));
+    }
+    .about-hero h1 { font-size: 2.5rem; color: var(--green-dark); margin-bottom: 1rem; }
+    .about-hero p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto; }
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+    .about-section {
+      max-width: 800px; margin: 0 auto; padding: 3rem 2rem;
+    }
+    .about-section h2 { font-size: 1.8rem; color: var(--green-dark); margin-bottom: 1.5rem; }
+    .about-section p { font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1rem; }
+    .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .value-card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; }
+    .value-card h3 { font-size: 1.2rem; color: var(--green-dark); margin-bottom: 0.5rem; }
+    .value-card p { font-size: 0.9rem; color: #666; }
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+    .contact-section {
+      max-width: 600px; margin: 0 auto; padding: 3rem 2rem 4rem; text-align: center;
+    }
+    .contact-section h2 { font-size: 1.8rem; color: var(--green-dark); margin-bottom: 1.5rem; }
+    .contact-card {
+      background: var(--white); padding: 2.5rem; border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-top: 1.5rem;
+    }
+    .contact-item { margin-bottom: 1.5rem; }
+    .contact-item label { display: block; font-size: 0.85rem; color: #999; margin-bottom: 0.3rem; }
+    .contact-item a { font-size: 1.1rem; color: var(--green-dark); font-weight: bold; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    footer { text-align: center; padding: 2rem; background: var(--green-dark); color: var(--white); }
+    footer p { font-size: 0.9rem; opacity: 0.8; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { display: none; }
+      .about-hero h1 { font-size: 2rem; }
+      .about-section, .contact-section { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Pyq <span>Tea</span></div>
+    <ul>
+      <li><a href="/">首页</a></li>
+      <li><a href="/about">关于我们</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/" class="back-btn">← 返回首页</a>
+    </div>
+  </nav>
+
+  <section class="about-hero">
+    <h1>关于 Pyq Tea</h1>
+    <p>致力于将中国精品茶叶带给世界各地的茶友，每一片茶叶都经过精心挑选，确保品质与正宗。</p>
+  </section>
+
+  <section class="about-section">
+    <h2>我们的故事</h2>
+    <p>Pyq Tea 创立于 2026 年，源于对中国茶文化的热爱与分享的愿望。我们与各大茶产区建立了直接合作关系，从龙井到普洱，从铁观音到茉莉花茶，每一款茶叶都来自原产地，由经验丰富的茶农手工采摘制作。</p>
+    <p>我们相信，好茶不应该只留在产地。通过 Cloudflare 全球网络，我们将中国精品茶叶带给欧美及全球茶友，让更多人体验东方茶文化的魅力。</p>
+
+    <h2 style="margin-top: 3rem;">我们的价值观</h2>
+    <div class="values">
+      <div class="value-card">
+        <h3>🌿 原产地直供</h3>
+        <p>所有茶叶直接来自产区，无中间商，确保新鲜与正宗。</p>
+      </div>
+      <div class="value-card">
+        <h3>✋ 手工采摘</h3>
+        <p>传统工艺，手工制作，保留茶叶最本真的风味。</p>
+      </div>
+      <div class="value-card">
+        <h3>🌍 全球配送</h3>
+        <p>通过全球物流网络，将茶叶送达世界各地。</p>
+      </div>
+      <div class="value-card">
+        <h3>✅ 品质保证</h3>
+        <p>每批茶叶经过严格品控，确保符合出口标准。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>联系我们</h2>
+    <p>如有任何问题或合作意向，欢迎通过以下方式联系我们：</p>
+    <div class="contact-card">
+      <div class="contact-item">
+        <label>邮箱</label>
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+      </div>
+      <div class="contact-item">
+        <label>网站</label>
+        <a href="https://tea.pyqhintl.com">tea.pyqhintl.com</a>
+      </div>
+      <div class="contact-item">
+        <label>营业时间</label>
+        <p>周一至周五 9:00 - 18:00（北京时间）</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Pyq Tea — 精品中国茶 · tea.pyqhintl.com</p>
+  </footer>
+</body>
+</html>
